@@ -6,6 +6,10 @@ app = Flask(__name__)
 translator = Translator()
 CORS(app)
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 @app.route('/translate', methods=['POST'])
 def translate_text():
     try:
