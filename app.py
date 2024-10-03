@@ -28,11 +28,11 @@ supported_languages = {
     "Portuguese": "pt",
     "Arabic": "ar",
     # Additional languages
+    "Danish": "da",
     "Bengali": "bn",
     "Bulgarian": "bg",
     "Catalan": "ca",
     "Czech": "cs",
-    "Danish": "da",
     "Dutch": "nl",
     "Finnish": "fi",
     "Greek": "el",
@@ -67,6 +67,7 @@ supported_languages = {
 
 # Chinese and Japanese versions of supported languages
 supported_languages_zh_tw = {
+    "繁體中文": "zh-TW",
     "英文": "en",
     "希伯來文": "he",
     "西班牙文": "es",
@@ -76,18 +77,17 @@ supported_languages_zh_tw = {
     "德文": "de",
     "匈牙利文": "hu",
     "簡體中文": "zh-CN",
-    "繁體中文": "zh-TW",
     "日文": "ja",
     "韓文": "ko",
     "俄文": "ru",
     "葡萄牙文": "pt",
     "阿拉伯文": "ar",
     # Additional languages
+    "丹麥文": "da",
     "孟加拉文": "bn",
     "保加利亞文": "bg",
     "加泰羅尼亞文": "ca",
     "捷克文": "cs",
-    "丹麥文": "da",
     "荷蘭文": "nl",
     "芬蘭文": "fi",
     "希臘文": "el",
@@ -121,6 +121,7 @@ supported_languages_zh_tw = {
 }
 
 supported_languages_ja = {
+    "日本語": "ja",
     "英語": "en",
     "ヘブライ語": "he",
     "スペイン語": "es",
@@ -131,17 +132,16 @@ supported_languages_ja = {
     "ハンガリー語": "hu",
     "簡体中国語": "zh-CN",
     "繁体中国語": "zh-TW",
-    "日本語": "ja",
     "韓国語": "ko",
     "ロシア語": "ru",
     "ポルトガル語": "pt",
     "アラビア語": "ar",
     # Additional languages
+    "デンマーク語": "da",
     "ベンガル語": "bn",
     "ブルガリア語": "bg",
     "カタルーニャ語": "ca",
     "チェコ語": "cs",
-    "デンマーク語": "da",
     "オランダ語": "nl",
     "フィンランド語": "fi",
     "ギリシャ語": "el",
