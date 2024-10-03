@@ -59,7 +59,6 @@ supported_languages = {
     "Bosnian (Latin)": "bs-Latn",
     "Bosnian (Cyrillic)": "bs-Cyrl",
 }
-
 # 首頁路由
 @app.route('/')
 def index():
@@ -71,6 +70,7 @@ def translate_text():
     try:
         data = request.json
         text = data.get('text')
+        src_lang = data.get('src_lang', 'auto')  # 默認為自動偵測
         dest_lang = data.get('dest_lang', 'en')
 
         if not text:
@@ -79,7 +79,7 @@ def translate_text():
                 "message": "Please make sure to include the text you want to translate."
             }), 400
 
-        translated = translator.translate(text, dest=dest_lang)
+        translated = translator.translate(text, src=src_lang, dest=dest_lang)
         return jsonify({
             "original_text": text,
             "translated_text": translated.text,
