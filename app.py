@@ -10,7 +10,7 @@ CORS(app)
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Supported languages and codes
+
 supported_languages = {
     "English": "en",
     "Hebrew": "he",
@@ -27,7 +27,7 @@ supported_languages = {
     "Russian": "ru",
     "Portuguese": "pt",
     "Arabic": "ar",
-    # Additional languages
+    
     "Danish": "da",
     "Bengali": "bn",
     "Bulgarian": "bg",
@@ -65,7 +65,7 @@ supported_languages = {
     "Bosnian (Cyrillic)": "bs-Cyrl",
 }
 
-# Chinese and Japanese versions of supported languages
+
 supported_languages_zh_tw = {
     "繁體中文": "zh-TW",
     "英文": "en",
@@ -82,7 +82,6 @@ supported_languages_zh_tw = {
     "俄文": "ru",
     "葡萄牙文": "pt",
     "阿拉伯文": "ar",
-    # Additional languages
     "丹麥文": "da",
     "孟加拉文": "bn",
     "保加利亞文": "bg",
@@ -136,7 +135,6 @@ supported_languages_ja = {
     "ロシア語": "ru",
     "ポルトガル語": "pt",
     "アラビア語": "ar",
-    # Additional languages
     "デンマーク語": "da",
     "ベンガル語": "bn",
     "ブルガリア語": "bg",
@@ -219,11 +217,11 @@ def translate_text():
 def get_languages_en():
     return jsonify(supported_languages)
 
-@app.route('/languages-zh-tw', methods=['GET'])
+@app.route('/languages/zh-tw', methods=['GET'])
 def get_languages_zh_tw():
     return jsonify(supported_languages_zh_tw)
 
-@app.route('/languages-ja', methods=['GET'])
+@app.route('/languages/ja', methods=['GET'])
 def get_languages_ja():
     return jsonify(supported_languages_ja)
 
