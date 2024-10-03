@@ -8,7 +8,7 @@ CORS(app)
 
 # 支援的語言及代碼
 supported_languages = {
-    "Auto-detect": "auto",
+    
     "English": "en",
     "Traditional Chinese": "zh-TW",
     "Hebrew": "he",
