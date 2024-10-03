@@ -1,10 +1,14 @@
 from flask import Flask, request, jsonify, render_template
 from googletrans import Translator
 from flask_cors import CORS
+import logging
 
 app = Flask(__name__)
 translator = Translator()
 CORS(app)
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Supported languages and codes
 supported_languages = {
@@ -23,6 +27,7 @@ supported_languages = {
     "Russian": "ru",
     "Portuguese": "pt",
     "Arabic": "ar",
+    # Additional languages
     "Bengali": "bn",
     "Bulgarian": "bg",
     "Catalan": "ca",
@@ -60,6 +65,7 @@ supported_languages = {
     "Bosnian (Cyrillic)": "bs-Cyrl",
 }
 
+# Chinese and Japanese versions of supported languages
 supported_languages_zh_tw = {
     "英文": "en",
     "希伯來文": "he",
@@ -76,6 +82,7 @@ supported_languages_zh_tw = {
     "俄文": "ru",
     "葡萄牙文": "pt",
     "阿拉伯文": "ar",
+    # Additional languages
     "孟加拉文": "bn",
     "保加利亞文": "bg",
     "加泰羅尼亞文": "ca",
@@ -129,6 +136,7 @@ supported_languages_ja = {
     "ロシア語": "ru",
     "ポルトガル語": "pt",
     "アラビア語": "ar",
+    # Additional languages
     "ベンガル語": "bn",
     "ブルガリア語": "bg",
     "カタルーニャ語": "ca",
@@ -166,7 +174,6 @@ supported_languages_ja = {
     "ボスニア語（キリル文字）": "bs-Cyrl",
 }
 
-
 # Home route
 @app.route('/')
 def index():
@@ -187,7 +194,11 @@ def translate_text():
                 "message": "Please make sure to include the text you want to translate."
             }), 400
 
+        # Log the translation request
+        logging.info(f"Translating text: '{text}' from {src_lang} to {dest_lang}")
+
         translated = translator.translate(text, src=src_lang, dest=dest_lang)
+
         return jsonify({
             "original_text": text,
             "translated_text": translated.text,
@@ -197,6 +208,7 @@ def translate_text():
         })
 
     except Exception as e:
+        logging.error(f"Translation error: {str(e)}")
         return jsonify({
             "error": "Translation service failed",
             "message": f"An error occurred: {str(e)}. Please try again later or contact support."
@@ -216,4 +228,4 @@ def get_languages_ja():
     return jsonify(supported_languages_ja)
 
 if __name__ == '__main__':
-    app.run(port=10000, host='0.0.0.0', debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
