@@ -6,7 +6,7 @@ app = Flask(__name__)
 translator = Translator()
 CORS(app)
 
-# 支援的語言及代碼
+# Supported languages and codes
 supported_languages = {
     "English": "en",
     "Hebrew": "he",
@@ -59,6 +59,7 @@ supported_languages = {
     "Bosnian (Latin)": "bs-Latn",
     "Bosnian (Cyrillic)": "bs-Cyrl",
 }
+
 supported_languages_zh_tw = {
     "英文": "en",
     "希伯來文": "he",
@@ -111,6 +112,7 @@ supported_languages_zh_tw = {
     "波斯尼亞文（拉丁）": "bs-Latn",
     "波斯尼亞文（西里爾）": "bs-Cyrl",
 }
+
 supported_languages_ja = {
     "英語": "en",
     "ヘブライ語": "he",
@@ -165,18 +167,18 @@ supported_languages_ja = {
 }
 
 
-# 首頁路由
+# Home route
 @app.route('/')
 def index():
     return render_template('index.html')
 
-# 翻譯 API 路由
+# Translation API route
 @app.route('/translate', methods=['POST'])
 def translate_text():
     try:
         data = request.json
         text = data.get('text')
-        src_lang = data.get('src_lang', 'auto')  # 默認為自動偵測
+        src_lang = data.get('src_lang', 'auto')  # Default is auto-detection
         dest_lang = data.get('dest_lang', 'en')
 
         if not text:
@@ -200,15 +202,17 @@ def translate_text():
             "message": f"An error occurred: {str(e)}. Please try again later or contact support."
         }), 500
 
-# 語言 API 路由
+# Language API routes
 @app.route('/languages', methods=['GET'])
-def get_languages():
+def get_languages_en():
     return jsonify(supported_languages)
+
 @app.route('/languages-zh-tw', methods=['GET'])
-def get_languages():
+def get_languages_zh_tw():
     return jsonify(supported_languages_zh_tw)
+
 @app.route('/languages-ja', methods=['GET'])
-def get_languages():
+def get_languages_ja():
     return jsonify(supported_languages_ja)
 
 if __name__ == '__main__':
